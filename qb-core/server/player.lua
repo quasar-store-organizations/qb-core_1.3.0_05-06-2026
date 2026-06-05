@@ -442,8 +442,8 @@ function QBCore.Player.CheckPlayerData(source, PlayerData)
         end
     end
 
-    if not Offline and GetResourceState('qb-inventory') ~= 'missing' then
-        PlayerData.items = exports['qb-inventory']:LoadInventory(PlayerData.source, PlayerData.citizenid)
+    if not Offline and GetResourceState('qs-inventory') ~= 'missing' then
+        PlayerData.items = exports['qs-inventory']:LoadInventory(PlayerData.source, PlayerData.citizenid)
     end
 
     return QBCore.Player.CreatePlayer(PlayerData, Offline)
@@ -502,7 +502,7 @@ function QBCore.Player.Save(source)
             position  = json.encode(pcoords),
             metadata  = json.encode(PlayerData.metadata)
         })
-        if GetResourceState('qb-inventory') ~= 'missing' then exports['qb-inventory']:SaveInventory(source) end
+        if GetResourceState('qs-inventory') ~= 'missing' then exports['qs-inventory']:SaveInventory(source) end
         QBCore.ShowSuccess(resourceName, PlayerData.name .. ' PLAYER SAVED!')
     else
         QBCore.ShowError(resourceName, 'ERROR QBCORE.PLAYER.SAVE - PLAYERDATA IS EMPTY!')
@@ -523,7 +523,7 @@ function QBCore.Player.SaveOffline(PlayerData)
             position  = json.encode(PlayerData.position),
             metadata  = json.encode(PlayerData.metadata)
         })
-        if GetResourceState('qb-inventory') ~= 'missing' then exports['qb-inventory']:SaveInventory(PlayerData, true) end
+        if GetResourceState('qs-inventory') ~= 'missing' then exports['qs-inventory']:SaveInventory(PlayerData, true) end
         QBCore.ShowSuccess(resourceName, PlayerData.name .. ' OFFLINE PLAYER SAVED!')
     else
         QBCore.ShowError(resourceName, 'ERROR QBCORE.PLAYER.SAVEOFFLINE - PLAYERDATA IS EMPTY!')
